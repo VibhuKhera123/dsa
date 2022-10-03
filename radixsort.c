@@ -54,7 +54,13 @@ void printArray(int array[], int size) {
 int main() {
   int array[100];
   int n,i;
-  printf("Enter the number of elements in the array");
+  printf("Enter the number of elements in the array: ");
+  scanf("%d",&n);
+  printf("Enter the elements of the array: ");
+  for(i=0;i<n;i++){
+    scanf("%d",&array[i]);
+  }
+  printf("Sorted array: ");
   radixsort(array, n);
   printArray(array, n);
 }
