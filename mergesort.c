@@ -1,60 +1,60 @@
 #include <stdio.h>
 
-void merge(int A[], int mid, int first_index, int last_index)
+void merge(int a[], int mid, int fi, int li)
 {
     int i, j, k;
     int b[10];
-    i = first_index;
+    i = fi;
     j = mid + 1;
-    k = first_index;
+    k = fi;
 
-    while (i <= mid && j <= last_index)
+    while (i <= mid && j <= li)
     {
-        if (A[i] <= A[j])
+        if (a[i] <= a[j])
         {
-            b[k] = A[i];
+            b[k] = a[i];
             i++;         
             k++;
         }
         else
         {
-            b[k] = A[j];
+            b[k] = a[j];
             j++;
             k++;
         }
     }
-    if(j > last_index){
+    if(j > li){
     while (i <= mid)
     {
-        b[k] = A[i];
+        b[k] = a[i];
         i++;
         k++;
     }
     }
     else{
-    while (j <= last_index)
+    while (j <= li)
     {
-        b[k] = A[j];
+        b[k] = a[j];
         j++;
         k++;
     }
     }
-    for (int i = first_index; i <= last_index; i++)
+    for (int i = fi; i <= li; i++)
     {
-        A[i] = b[i];
+        a[i] = b[i];
     }
 }
 
-void mergesort(int A[], int first_index, int last_index)
+void mergesort(int arr[], int fi, int li)
 {
     int mid;
 
-    if (first_index < last_index)
+    if (fi < li)
     {
-        mid = (first_index + last_index) / 2;
-        mergesort(A, first_index, mid);
-        mergesort(A, mid + 1, last_index);
-        merge(A, mid,first_index,last_index);
+        mid = (fi + li) / 2;
+        mergesort(arr, fi, mid);
+        mergesort(arr, mid + 1, li);
+        merge(arr, mid,fi,li);
     }
 }
 int main()
