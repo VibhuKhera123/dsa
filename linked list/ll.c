@@ -9,15 +9,23 @@ struct Node
 };
 
 
-struct Node * insertBegning(struct Node * head,int data){
+struct Node * insertBeginning(struct Node * head,int data){
+    if (head!=NULL){
     struct Node * ptr = (struct Node *)malloc(sizeof(struct Node));
     ptr -> next = head;
     ptr -> data = data;
     return ptr;
+    }
+    else{
+        struct Node * ptr = (struct Node *)malloc(sizeof(struct Node));
+        ptr->next=NULL;
+        ptr->data=data;
+        return ptr;
+    }
 }
 
 
-struct Node * insetInBetween(struct Node * head,int data,int index){
+struct Node * insertInBetween(struct Node * head,int data,int index){
     struct Node * ptr = (struct Node *)malloc(sizeof(struct Node));
     struct Node * p = (struct Node *)malloc(sizeof(struct Node *));
     int i=0;
@@ -75,7 +83,11 @@ int main()
 
     third->data = 20;
     third->next = NULL;
+
+
     head = insertBegning(head, 50);
+    //head = insertAtEnd(head,35);
+    //head = insertInBetween(head,48,3);
     triverse(head);
     
     return 0;
