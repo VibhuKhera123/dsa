@@ -29,7 +29,12 @@ struct Node * insertInBetween(struct Node * head,int data,int index){
     struct Node * ptr = (struct Node *)malloc(sizeof(struct Node));
     struct Node * p = (struct Node *)malloc(sizeof(struct Node *));
     int i=0;
-    while (i != index-1)
+    if(head == NULL){
+        ptr = head;
+        ptr->next =NULL;
+    }
+    else{
+        while (i != index-1)
     {
         p = p ->next;
         i++;
@@ -37,6 +42,8 @@ struct Node * insertInBetween(struct Node * head,int data,int index){
     ptr->data=data;
     ptr->next=p->next;
     p->next = ptr;
+    }
+    
     return head;
 }
 
