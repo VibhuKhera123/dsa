@@ -11,16 +11,17 @@ struct Node
 
 struct Node * insertBeginning(struct Node * head,int data){
     if (head!=NULL){
-    struct Node * ptr = (struct Node *)malloc(sizeof(struct Node));
-    ptr -> next = head;
-    ptr -> data = data;
-    return ptr;
+        struct Node * ptr = (struct Node *)malloc(sizeof(struct Node));
+        ptr -> next = head;
+        ptr -> data = data;
+        return ptr;
     }
     else{
         struct Node * ptr = (struct Node *)malloc(sizeof(struct Node));
         ptr->next=NULL;
         ptr->data=data;
-        return ptr;
+        head = ptr;
+        return head ;
     }
 }
 
