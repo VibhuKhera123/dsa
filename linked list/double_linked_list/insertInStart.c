@@ -39,7 +39,7 @@ void display()
 
 void begin(int data)
 {
-  struct node *newnode;
+  struct node *newnode; 
   newnode = (struct node *)malloc(sizeof(struct node));
   newnode->data = data;
   newnode->previous = NULL;

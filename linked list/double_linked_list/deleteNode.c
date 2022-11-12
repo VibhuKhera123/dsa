@@ -2,19 +2,12 @@
 #include <stdlib.h>
 
 
-/*
- * Basic structure of Node
- */
 struct node {
     int data;
     struct node * prev;
     struct node * next;
 }*head, *last;
 
-
-/*
- * Functions used in this program
- */
 void createList(int n);
 void displayList();
 void deleteFromBeginning();
@@ -29,9 +22,7 @@ int main()
     head = NULL;
     last = NULL;
 
-    /*
-     * Run forever until user chooses 0
-     */
+    
     while(choice != 0)
     {
         printf("============================================\n");
@@ -83,10 +74,6 @@ int main()
 
 
 
-/**
- * Creates a doubly linked list of n nodes.
- * @n Number of nodes to be created
- */
 void createList(int n)
 {
     int i, data;
@@ -94,9 +81,7 @@ void createList(int n)
 
     if(n >= 1)
     {
-        /*
-         * Creates and links the head node
-         */
+        
         head = (struct node *)malloc(sizeof(struct node));
 
         printf("Enter data of 1 node: ");
@@ -131,9 +116,7 @@ void createList(int n)
 }
 
 
-/**
- * Display the content of the list from beginning to end
- */
+
 void displayList()
 {
     struct node * temp;
@@ -161,9 +144,7 @@ void displayList()
 }
 
 
-/**
- * Delete or remove the first node of the doubly linked list
- */
+
 void deleteFromBeginning()
 {
     struct node * toDelete;
@@ -176,20 +157,18 @@ void deleteFromBeginning()
     {
         toDelete = head;
 
-        head = head->next; // Move head pointer to 2 node
+        head = head->next; 
 
         if (head != NULL)
-            head->prev = NULL; // Remove the link to previous node
+            head->prev = NULL; 
 
-        free(toDelete); // Delete the first node from memory
+        free(toDelete); 
         printf("SUCCESSFULLY DELETED NODE FROM BEGINNING OF THE LIST.\n");
     }
 }
 
 
-/**
- * Delete or remove the last node of the doubly linked list
- */
+
 void deleteFromEnd()
 {
     struct node * toDelete;
@@ -213,9 +192,7 @@ void deleteFromEnd()
 }
 
 
-/**
- * Delete node from any position in the doubly linked list
- */
+
 void deleteFromN(int position)
 {
     struct node *current;
