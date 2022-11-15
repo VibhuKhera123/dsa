@@ -37,15 +37,6 @@ int priority(symbol)  {
 		        case '/':
 		        return 4;
 		break;
-		case '$':
-		        case '^':
-		        return 6;
-		break;
-		case '#':
-		        case '(':
-		        case ')':
-		        return 1;
-		break;
 	}
 }
 int isOperator(char symbol) {
@@ -54,9 +45,7 @@ int isOperator(char symbol) {
 		        case '-':
 		        case '*':
 		        case '/':
-		        case '^':
-		        case '$':
-		        case '&':
+		        
 		        case '(':
 		        case ')':
 		        return 1;
