@@ -16,7 +16,6 @@ void print(int arr[]);
 void printBuckets(struct Node *list);
 int getIndex(int value);
 
-
 void BucketSort(int arr[]) {
   int i, j;
   struct Node **buckets;

@@ -1,74 +1,55 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node
-{
-    int data;
-    int priority;
-    struct node *next;
-} * head , *temp;
-
-void display()
-{
-    struct node *temp = head;
-    while (temp != NULL)
-    {
-        printf("%d\t", temp->data);
-        temp = temp->next;
-    }
+typedef struct node {
+   int data;
+   int priority;
+   struct node* next;
+} Node;
+Node* newNode(int d, int p) {
+   Node* temp = (Node*)malloc(sizeof(Node));
+   temp->data = d;
+   temp->priority = p;
+   temp->next = NULL;
+   return temp;
+}
+int peek(Node** head) {
+   return (*head)->data;
+}
+void delete(Node** head) {
+   Node* temp = *head;
+   (*head) = (*head)->next;
+   free(temp);
+}
+void insert(Node** head, int d, int p) {
+   Node* start = (*head);
+   Node* temp = newNode(d, p);
+   if ((*head)->priority < p) {
+      temp->next = *head;
+      (*head) = temp;
+   } else {
+      while (start->next != NULL &&
+      start->next->priority > p) {
+         start = start->next;
+      }
+      
+      temp->next = start->next;
+      start->next = temp;
+   }
 }
 
-void enqueue(int value, int priority)
-{
-
-    struct node *newnode;
-    newnode = (struct node *)malloc(sizeof(struct node));
-    newnode->data = value;
-    newnode->priority = priority;
-    
-
-    if (head == NULL)
-    {
-        newnode->next = NULL;
-        head = temp = newnode;
-    }
-    else
-    {
-        while (temp != NULL)
-        {
-            if (temp->priority > newnode->priority)
-            {
-                temp->next = newnode;
-                newnode->next = NULL;
-                temp = temp->next;
-            }
-            else
-            {
-                newnode->next = temp;
-                temp = newnode;
-            }
-        }
-    }
+int isEmpty(Node** head) {
+   return (*head) == NULL;
 }
 
-int main()
-
-{
-    int value, priority,i,n;
-    printf("Enter the number of elements in the list: ");
-    scanf("%d",&n);
-    for(i=0;i<n;i++){
-        printf("\nEnter the value: ");
-        scanf("%d",&value);
-        printf("Enter the priority: ");
-        scanf("%d",&priority);
-        enqueue(value, priority);
-    }
-
-    
-
-    printf("Queue is :");
-    printf("\n");
-    display();
-    return 0;
+int main() {
+   Node* pq = newNode(7, 1);
+   insert(&pq, 1, 2);
+   insert(&pq, 3, 3);
+   insert(&pq, 2, 0);
+   while (!isEmpty(&pq)) {
+      printf("%d ", peek(&pq));
+      delete(&pq);
+   }
+   return 0;
 }

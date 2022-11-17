@@ -8,7 +8,7 @@ struct Node
     struct Node * next;
 };
 
-struct Node * insertValue(struct Node * head,int value,int power){
+struct Node * priorityQueue(struct Node * head,int value,int power){
     struct Node * temp;
     struct Node * new = (struct Node *)malloc(sizeof(struct Node));
     new->value=value;
@@ -42,7 +42,7 @@ struct Node * create(struct Node * head){
         scanf("%d",&value);
         printf("Enter the power of variable %d: ",i);
         scanf("%d",&power);
-        head = insertValue(head,value,power);
+        head = priorityQueue(head,value,power);
     }
     return head;
 }
@@ -75,7 +75,7 @@ void polyMultiply(struct Node * head1,struct Node * head2){
         {
             result1 =   ptr1->value * ptr2->value;
             result2 = ptr1->power + ptr2->power;
-            head3 = insertValue(head3,result1,result2);
+            head3 = priorityQueue(head3,result1,result2);
             ptr2=ptr2->next;
         }
         ptr1=ptr1->next;

@@ -7,7 +7,6 @@ void merge(int a[], int mid, int fi, int li)
     i = fi;
     j = mid + 1;
     k = fi;
-
     while (i <= mid && j <= li)
     {
         if (a[i] <= a[j])
@@ -48,7 +47,6 @@ void merge(int a[], int mid, int fi, int li)
 void mergesort(int arr[], int fi, int li)
 {
     int mid;
-
     if (fi < li)
     {
         mid = (fi + li) / 2;
