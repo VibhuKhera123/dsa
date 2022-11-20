@@ -1,59 +1,21 @@
 # include <stdio.h>
 # include <string.h>
-# define MAX 100
+# define MAX 20
+void infixtoprefix(char infix[20],char prefix[20]);
+void reverse(char array[30]);
+char pop();
+void push(char symbol);
+int isOperator(char symbol);
+int prcd(symbol);
 int top=-1;
 char stack[MAX];
-
-void reverse(char array[30])  {
-	int i,j;
-	char temp[100];
-	for (i=strlen(array)-1,j=0;i+1!=0;--i,++j) {
-		temp[j]=array[i];
-	}
-	temp[j]='\0';
-	strcpy(array,temp);
-	return array;
-}
-
-char pop() {
-	char a;
-	a=stack[top];
-	top--;
-	return a;
-}
-
-void push(char symbol) {
-	top++;
-	stack[top]=symbol;
-}
-
-int priority(symbol)  {
-	switch(symbol) {
-		case '+':
-		        case '-':
-		        return 2;
-		break;
-		case '*':
-		        case '/':
-		        return 4;
-		break;
-	}
-}
-int isOperator(char symbol) {
-	switch(symbol) {
-		case '+':
-		        case '-':
-		        case '*':
-		        case '/':
-		        
-		        case '(':
-		        case ')':
-		        return 1;
-		break;
-		default:
-		        return 0;
-		
-	}
+main() {
+	char infix[20],prefix[20],temp;
+	printf("Enter infix operation: ");
+	gets(infix);
+	infixtoprefix(infix,prefix);
+	reverse(prefix);
+	puts((prefix));
 }
 
 void infixtoprefix(char infix[20],char prefix[20]) {
@@ -76,10 +38,10 @@ void infixtoprefix(char infix[20],char prefix[20]) {
 				}
 				pop();
 			} else {
-				if (priority(stack[top])<=priority(symbol)) {
+				if (prcd(stack[top])<=prcd(symbol)) {
 					push(symbol);
 				} else {
-					while(priority(stack[top])>=priority(symbol)) {
+					while(prcd(stack[top])>=prcd(symbol)) {
 						prefix[j]=pop();
 						j++;
 					}
@@ -98,16 +60,66 @@ void infixtoprefix(char infix[20],char prefix[20]) {
 	prefix[j]='\0';
 }
 
-
-
-int main() {
-	char infix[20],prefix[20],temp;
-	printf("Enter infix operation: ");
-	gets(infix);
-	infixtoprefix(infix,prefix);
-	reverse(prefix);
-	puts((prefix));
-    return 0;
+void reverse(char array[30]){
+	int i,j;
+	char temp[100];
+	for (i=strlen(array)-1,j=0;i+1!=0;--i,++j) {
+		temp[j]=array[i];
+	}
+	temp[j]='\0';
+	strcpy(array,temp);
+	return array;
 }
 
+char pop() {
+	char a;
+	a=stack[top];
+	top--;
+	return a;
+}
 
+void push(char symbol) {
+	top++;
+	stack[top]=symbol;
+}
+
+int prcd(symbol) {
+	switch(symbol) {
+		case '+':
+		        case '-':
+		        return 2;
+		break;
+		case '*':
+		        case '/':
+		        return 4;
+		break;
+		case '$':
+		        case '^':
+		        return 6;
+		break;
+		case '#':
+		        case '(':
+		        case ')':
+		        return 1;
+		break;
+	}
+}
+
+int isOperator(char symbol) {
+	switch(symbol) {
+		case '+':
+		        case '-':
+		        case '*':
+		        case '/':
+		        case '^':
+		        case '$':
+		        case '&':
+		        case '(':
+		        case ')':
+		        return 1;
+		break;
+		default:
+		        return 0;
+		
+	}
+}
