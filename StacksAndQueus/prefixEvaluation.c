@@ -1,6 +1,5 @@
 
 #include<stdio.h>
-#include<conio.h>
 #include<string.h>
 
 int s[50];
@@ -13,10 +12,9 @@ int main()
 {
 	int a,b,c,i;
 	char prefix[50];
-	printf("\nEnter the prefix string in figures(1 digit nos);");
+	printf("Enter the prefix string in figures(single digit);");
 	gets(prefix);
 
-	//for(i=0;i<strlen(prefix);i++)
 	for(i=strlen(prefix)-1;i>=0;i--)
 	{
 		if(prefix[i]=='+')

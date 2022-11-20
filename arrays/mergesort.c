@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void merge(int a[], int mid, int fi, int li)
 {
     int i, j, k;
-    int b[10];
+    int *b;
+    b=(int *)calloc(li,sizeof(int));
     i = fi;
     j = mid + 1;
     k = fi;
@@ -23,20 +25,20 @@ void merge(int a[], int mid, int fi, int li)
         }
     }
     if(j > li){
-    while (i <= mid)
-    {
-        b[k] = a[i];
-        i++;
-        k++;
-    }
+        while (i <= mid)
+        {
+            b[k] = a[i];
+            i++;
+            k++;
+        }
     }
     else{
-    while (j <= li)
-    {
-        b[k] = a[j];
-        j++;
-        k++;
-    }
+        while (j <= li)
+        {
+            b[k] = a[j];
+            j++;
+            k++;
+        }
     }
     for (int i = fi; i <= li; i++)
     {
@@ -58,7 +60,8 @@ void mergesort(int arr[], int fi, int li)
 int main()
 {
     int n,i;
-    int a[100];
+    int *a;
+    a=(int *)calloc(n,sizeof(int));
     printf("Enter the nunmber of elements in the array:");
     scanf("%d",&n);
     printf("Enter the elements of the array: ");
