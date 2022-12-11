@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 typedef struct node {
    int data;
    int priority;
@@ -32,21 +31,19 @@ void insert(Node** head, int d, int p) {
       start->next->priority > p) {
          start = start->next;
       }
-      
       temp->next = start->next;
       start->next = temp;
    }
 }
-
 int isEmpty(Node** head) {
    return (*head) == NULL;
 }
-
 int main() {
    Node* pq = newNode(7, 1);
    insert(&pq, 1, 2);
    insert(&pq, 3, 3);
    insert(&pq, 2, 0);
+   printf("The queue according to priority is:\n");
    while (!isEmpty(&pq)) {
       printf("%d ", peek(&pq));
       delete(&pq);

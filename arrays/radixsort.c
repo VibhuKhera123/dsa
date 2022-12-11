@@ -60,7 +60,7 @@ int main() {
   for(i=0;i<n;i++){
     scanf("%d",&array[i]);
   }
-  printf("Sorted array: ");
   radixsort(array, n);
+  printf("Sorted array: ");
   printArray(array, n);
 }

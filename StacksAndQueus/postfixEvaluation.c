@@ -1,17 +1,14 @@
 #include<stdio.h>
 int stack[100];
 int top = -1;
-
 void push(int x)
 {
     stack[++top] = x;
 }
-
 int pop()
 {
     return stack[top--];
 }
-
 int main()
 {
     char exp[100];

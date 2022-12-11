@@ -45,7 +45,7 @@ void TraversalofCircularLL(){
 }
 
 
-void josphusWinner(int k,int n){
+void josephusWinner(int k,int n){
     prev = temp = head;
     while (n!=1)
     {
@@ -67,8 +67,8 @@ int main(){
     int n,k;
     printf("enter the no. of nodes: ");
     scanf("%d",&n);
-    printf("Enter the number of steps for josphus game: ");
+    printf("Enter the number of steps for josephus game: ");
     scanf("%d",&k);
     createCircularLL(n);
-    josphusWinner(k,n);
+    josephusWinner(k,n);
 }

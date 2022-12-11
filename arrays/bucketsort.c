@@ -59,7 +59,7 @@ void BucketSort(int arr[]) {
 
   for (j = 0, i = 0; i < NBUCKET; ++i) {
     struct Node *node;
-    node = buckets[i];
+    node = buckets[i];  
     while (node) {
       arr[j++] = node->data;
       node = node->next;
@@ -69,14 +69,14 @@ void BucketSort(int arr[]) {
   return;
 }
 
-struct Node *InsertionSort(struct Node *list) {
+struct Node *InsertionSort(struct Node *head) {
   struct Node *k, *nodeList;
-  if (list == 0 || list->next == 0) {
-    return list;
+  if (head == 0 || head->next == 0) {
+    return head;
   }
 
-  nodeList = list;
-  k = list->next;
+  nodeList = head;
+  k = head->next;
   nodeList->next = 0;
   while (k != 0) {
     struct Node *ptr;

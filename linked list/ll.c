@@ -69,8 +69,6 @@ void triverse(struct Node * ptr){
         printf("%d\n",ptr -> data);
         ptr = ptr -> next;
     }
-    
-    
 }
 
 
