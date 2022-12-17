@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdbool.h> 
-#define INF 9
+#define INF 999999
 #define V 5
 int G[V][V] = {
   {0, 9, 75, 0, 0},
