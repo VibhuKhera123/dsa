@@ -4,6 +4,10 @@
 	costheta_z **/
 #include <stdio.h>
 #include <stdlib.h>
+enum{
+	red,
+	black
+};
 
 // Structure to represent each
 // node in a red-black tree
@@ -82,16 +86,16 @@ void fixup(struct node* root, struct node* pt)
 		if (parent_pt == grand_parent_pt->l)
 		{
 
-			struct node* uncle_pt = grand_parent_pt->r;
+			struct node* sibling = grand_parent_pt->r;
 
 			/* Case : 1
 				The uncle of pt is also red
 				Only Recoloring required */
-			if (uncle_pt != NULL && uncle_pt->c == 1)
+			if (sibling != NULL && sibling->c == 1)
 			{
 				grand_parent_pt->c = 1;
 				parent_pt->c = 0;
-				uncle_pt->c = 0;
+				sibling->c = 0;
 				pt = grand_parent_pt;
 			}
 
@@ -122,15 +126,15 @@ void fixup(struct node* root, struct node* pt)
 			child of Grand-parent of
 		pt */
 		else {
-			struct node* uncle_pt = grand_parent_pt->l;
+			struct node* sibling = grand_parent_pt->l;
 			/* Case : 1
 				The uncle of pt is also red
 				Only Recoloring required */
-			if ((uncle_pt != NULL) && (uncle_pt->c == 1))
+			if ((sibling != NULL) && (sibling->c == 1))
 			{
 				grand_parent_pt->c = 1;
 				parent_pt->c = 0;
-				uncle_pt->c = 0;
+				sibling->c = 0;
 				pt = grand_parent_pt;
 			}
 			else {
@@ -156,6 +160,8 @@ void fixup(struct node* root, struct node* pt)
 
 	root->c = 0;
 }
+
+
 void inorder(struct node* trav)
 {
 	if (trav == NULL)
